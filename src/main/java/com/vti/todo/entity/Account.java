@@ -15,6 +15,7 @@ public class Account {
     private String email;
 
     private String password;
+
     @Column(name= "full_name", nullable = false)
     private String fullName;
 

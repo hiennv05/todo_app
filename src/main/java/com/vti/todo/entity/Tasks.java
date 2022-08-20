@@ -15,9 +15,11 @@ public class Tasks {
     @Column(name = "title", nullable = false)
     private String title;
 
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "task_status_id")
-    private TaskStatus statusId;
+    private TaskStatus status;
 
     @Column(name = "start_date")
     private LocalDate startDate;
@@ -27,6 +29,6 @@ public class Tasks {
 
     @ManyToOne
     @JoinColumn(name = "work_space_id")
-    private WorkSpace workSpaceId;
+    private WorkSpace workSpace;
 
 }
