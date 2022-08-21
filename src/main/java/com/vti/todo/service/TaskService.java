@@ -43,40 +43,37 @@ public class TaskService {
     public Optional<Tasks> updateTaskById(Integer id, TaskRequest request) {
         Optional<Tasks> oldTask = repository.findById(id);
 
-        oldTask.ifPresent(tasks -> {
-            tasks.setTitle(request.getTitle());
-            tasks.setDescription(request.getDescription());
+        oldTask.ifPresent(task -> {
+            task.setTitle(request.getTitle());
+            task.setDescription(request.getDescription());
 
             TaskStatus taskStatus = taskStatusRepository.findById(request.getTaskStatusId()).get();
-            tasks.setStatus(taskStatus);
+            task.setStatus(taskStatus);
 
-            tasks.setStartDate(request.getStartDate());
-            tasks.setDueDate(request.getDueDate());
+            task.setStartDate(request.getStartDate());
+            task.setDueDate(request.getDueDate());
 
-            WorkSpace workSpace = workSpaceRepository.findById(request.getWorkSpaceId()).get();
-            tasks.setWorkSpace(workSpace);
-
-            repository.save(tasks);
+            repository.save(task);
         });
         return oldTask;
     }
 
     public Tasks createNewTask(TaskRequest request) {
-        Tasks tasks = new Tasks();
-        tasks.setTitle(request.getTitle());
-        tasks.setDescription(request.getDescription());
+        Tasks task = new Tasks();
+        task.setTitle(request.getTitle());
+        task.setDescription(request.getDescription());
 
         TaskStatus taskStatus = taskStatusRepository.findById(request.getTaskStatusId()).get();
-        tasks.setStatus(taskStatus);
+        task.setStatus(taskStatus);
 
-        tasks.setStartDate(request.getStartDate());
-        tasks.setDueDate(request.getDueDate());
+        task.setStartDate(request.getStartDate());
+        task.setDueDate(request.getDueDate());
 
         WorkSpace workSpace = workSpaceRepository.findById(request.getWorkSpaceId()).get();
-        tasks.setWorkSpace(workSpace);
+        task.setWorkSpace(workSpace);
 
-        repository.save(tasks);
+        repository.save(task);
 
-        return tasks;
+        return task;
     }
 }

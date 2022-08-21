@@ -33,4 +33,7 @@ public class TaskController {
     public Tasks createNewTask(@RequestBody @Valid TaskRequest request) {
         return service.createNewTask(request);
     }
+
+    //Todo validate work space unique by id
+    // TOdo validate task unique by workspace id
 }
