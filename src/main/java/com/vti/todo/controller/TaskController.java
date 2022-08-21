@@ -30,7 +30,7 @@ public class TaskController {
     }
 
     @PostMapping("")
-    public Tasks createNewTask(@RequestBody @Valid TaskRequest request) {
+    public TaskResponse createNewTask(@RequestBody @Valid TaskRequest request) {
         return service.createNewTask(request);
     }
 

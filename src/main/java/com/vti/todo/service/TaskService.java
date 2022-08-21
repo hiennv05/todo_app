@@ -58,7 +58,7 @@ public class TaskService {
         return oldTask;
     }
 
-    public Tasks createNewTask(TaskRequest request) {
+    public TaskResponse createNewTask(TaskRequest request) {
         Tasks task = new Tasks();
         task.setTitle(request.getTitle());
         task.setDescription(request.getDescription());
@@ -73,7 +73,9 @@ public class TaskService {
         task.setWorkSpace(workSpace);
 
         repository.save(task);
+         TaskResponse taskResponse = new TaskResponse();
+         BeanUtils.copyProperties(task, taskResponse);
 
-        return task;
+        return taskResponse;
     }
 }
