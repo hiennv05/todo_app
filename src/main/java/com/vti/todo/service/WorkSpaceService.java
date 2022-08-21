@@ -6,10 +6,7 @@ import com.vti.todo.entity.Account;
 import com.vti.todo.entity.WorkSpace;
 import com.vti.todo.repository.IAccountRepository;
 import com.vti.todo.repository.ITaskRepository;
-import com.vti.todo.repository.ITaskStatusRepository;
 import com.vti.todo.repository.IWorkSpaceRepository;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,9 +20,6 @@ public class WorkSpaceService implements IWorkSpaceService {
     IWorkSpaceRepository repository;
     @Autowired
     IAccountRepository accountRepository;
-
-    @Autowired
-    ModelMapper modelMapper;
 
     @Autowired
     ITaskRepository taskRepository;
