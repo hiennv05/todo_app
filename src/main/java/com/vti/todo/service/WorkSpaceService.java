@@ -45,19 +45,12 @@ public class WorkSpaceService implements IWorkSpaceService {
     @Override
     public List<WorkSpaceResponse> getWorkSpaces() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-       // Account account = accountRepository.findByEmail(authentication.getName());
         String email = authentication.getName();
          List<WorkSpaceResponse> responses = repository.findWorkSpaceByAccEmail(email);
-
-//        for (WorkSpaceResponse w :responses) {
-//            int numOfTask = taskRepository.countByWorkSpaceId(w.getId());
-//            w.setNumberOfTask(numOfTask);
-//        }
         responses.forEach(workSpaces -> {
            int numOfTask =  taskRepository.countByWorkSpaceId(workSpaces.getId());
             workSpaces.setNumberOfTask(numOfTask);
         });
-
         return responses;
     }
 }

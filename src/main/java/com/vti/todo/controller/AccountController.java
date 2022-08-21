@@ -29,9 +29,9 @@ public class AccountController {
     public ResponseEntity<String> login(@RequestBody @Valid LoginRequest request) {
         return service.login(request);
     }
+
     @GetMapping("/principal")
     public UserDetails getCurrentAccount(@AuthenticationPrincipal UserDetails principal) {
         return principal;
     }
-
 }

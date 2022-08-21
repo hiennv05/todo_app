@@ -28,13 +28,9 @@ public class TaskController {
                                @RequestBody @Valid TaskRequest request) {
         service.updateTaskById(id, request);
     }
+
     @PostMapping("")
     public Tasks createNewTask(@RequestBody @Valid TaskRequest request) {
         return service.createNewTask(request);
     }
-
-
-
-
-
 }

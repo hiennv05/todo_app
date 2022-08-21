@@ -18,7 +18,6 @@ public class WorkSpaceController {
 
     @PostMapping
     public WorkSpaceResponse createWorkSpaces (@RequestBody @Valid WorkSpaceRequest request) {
-
         return service.createWorkSpaces(request);
     }
 
@@ -26,8 +25,4 @@ public class WorkSpaceController {
     public List<WorkSpaceResponse> getWorkSpaces() {
         return service.getWorkSpaces();
     }
-
-
-
-
 }

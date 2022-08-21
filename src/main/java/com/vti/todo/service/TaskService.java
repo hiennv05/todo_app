@@ -1,5 +1,4 @@
 package com.vti.todo.service;
-
 import com.vti.todo.dto.request.TaskRequest;
 import com.vti.todo.dto.response.TaskResponse;
 import com.vti.todo.entity.TaskStatus;
@@ -8,7 +7,6 @@ import com.vti.todo.entity.WorkSpace;
 import com.vti.todo.repository.ITaskRepository;
 import com.vti.todo.repository.ITaskStatusRepository;
 import com.vti.todo.repository.IWorkSpaceRepository;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,17 +19,10 @@ import java.util.Optional;
 public class TaskService {
     @Autowired
     ITaskRepository repository;
-
     @Autowired
     ITaskStatusRepository taskStatusRepository;
-
     @Autowired
     IWorkSpaceRepository workSpaceRepository;
-
-
-    @Autowired
-    ModelMapper modelMapper;
-
 
     public List<TaskResponse> getTaskByWorkSpace(Integer workspaceId) {
         List<TaskResponse> responses = new ArrayList<>();
@@ -71,9 +62,7 @@ public class TaskService {
     }
 
     public Tasks createNewTask(TaskRequest request) {
-
         Tasks tasks = new Tasks();
-
         tasks.setId((int) repository.countAllTask() + 1);
         tasks.setTitle(request.getTitle());
         tasks.setDescription(request.getDescription());
@@ -91,5 +80,4 @@ public class TaskService {
 
         return tasks;
     }
-
 }
