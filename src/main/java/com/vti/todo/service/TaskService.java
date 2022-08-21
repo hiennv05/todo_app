@@ -63,7 +63,6 @@ public class TaskService {
 
     public Tasks createNewTask(TaskRequest request) {
         Tasks tasks = new Tasks();
-        tasks.setId((int) repository.countAllTask() + 1);
         tasks.setTitle(request.getTitle());
         tasks.setDescription(request.getDescription());
 

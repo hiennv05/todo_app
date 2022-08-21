@@ -16,11 +16,9 @@ public interface ITaskRepository extends JpaRepository<Tasks, Integer> {
 
     int countByWorkSpaceId(Integer id);
 
-    @Query("select count(distinct id) from Tasks t ")
-    long countAllTask( );
-
+//    @Query("select count(distinct id) from Tasks t ")
+//    long countAllTask( );
 
     List<Tasks> findByWorkSpaceId(Integer workspaceId);
-
 
 }
