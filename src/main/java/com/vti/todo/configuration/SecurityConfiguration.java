@@ -28,7 +28,8 @@ public class SecurityConfiguration {
                 .authorizeRequests(auth -> auth
                         .antMatchers("/api/v1/accounts/login",
                                 "/api/v1/accounts/register",
-                                "/swagger-ui/**"
+                                "/swagger-ui/**",
+                                "/api/v1/accounts/forgot", "/api/v1/accounts/forgot/**"
                         ).permitAll() //cho phep cac URL cos pattern nhu tren truy cap ma khong can authentication
                         //.antMatchers(HttpMethod.GET).permitAll()
                         //cho phep cac URL cos pattern nhu tren voi method GET truy cap ma khong can authentication

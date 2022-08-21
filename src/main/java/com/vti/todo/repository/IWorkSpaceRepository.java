@@ -13,6 +13,10 @@ public interface IWorkSpaceRepository extends JpaRepository<WorkSpace, Integer> 
     @Query("SELECT (count(w) = 0) FROM WorkSpace w WHERE name = ?1")
     boolean isWorkSpaceNotExists(String name);
 
+//    @Query("SELECT (count(w) = 0) FROM WorkSpace w WHERE name = ?1　AND id = ?2")
+//    boolean isWorkSpaceNotExistsById(String name, Integer id);
+
+
     @Query(value = "SELECT NEW com.vti.todo.dto.response.WorkSpaceResponse(w.id, w.name, w.numberOfTask) FROM WorkSpace w WHERE w.account.email= ?1")
     List<WorkSpaceResponse> findWorkSpaceByAccEmail(String email);
 

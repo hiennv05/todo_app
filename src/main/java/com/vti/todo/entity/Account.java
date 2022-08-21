@@ -19,4 +19,6 @@ public class Account {
     @Column(name= "full_name", nullable = false)
     private String fullName;
 
+    private String lang;
+
 }

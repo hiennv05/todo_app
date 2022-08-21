@@ -2,6 +2,7 @@ package com.vti.todo.controller;
 
 import com.vti.todo.dto.request.AccountRequest;
 import com.vti.todo.dto.request.LoginRequest;
+import com.vti.todo.dto.request.ResetPasswordRequest;
 import com.vti.todo.entity.Account;
 import com.vti.todo.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +35,15 @@ public class AccountController {
     public UserDetails getCurrentAccount(@AuthenticationPrincipal UserDetails principal) {
         return principal;
     }
+
+    @PostMapping("/forgot/{email}")
+    public void forgotPassword(@PathVariable String email) {
+        service.forgotPassword(email);
+    }
+
+    @PostMapping("/forgot")
+    public ResponseEntity<?> resetPassword(@RequestBody @Valid ResetPasswordRequest request) {
+        return service.resetPassword(request);
+    }
+
 }
