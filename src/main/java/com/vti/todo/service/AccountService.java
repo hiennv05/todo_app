@@ -30,7 +30,7 @@ public class AccountService implements IAccountService{
     PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsService memberDetailService;
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
@@ -57,7 +57,7 @@ public class AccountService implements IAccountService{
 
     @Override
     public ResponseEntity<String> login(LoginRequest request) {
-        UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmail());
+        UserDetails userDetails = memberDetailService.loadUserByUsername(request.getEmail());
         if (passwordEncoder.matches(request.getPassword(), userDetails.getPassword())) {
             String token = jwtTokenProvider.createToken(request.getEmail(), userDetails.getAuthorities());
             return ResponseEntity.ok(token);
